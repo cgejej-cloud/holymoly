@@ -3,3 +3,7 @@ __pycache__/
 *.pyo
 .venv/
 venv/
+
+# Local-only artifacts: do not commit
+lyrics/
+voices/

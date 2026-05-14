@@ -18,7 +18,13 @@ import soundfile as sf
 import sherpa_onnx
 
 
-MODEL_DIR = "/home/user/voices/vits-mimic3-ko_KO-kss_low"
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(_HERE)
+# Allow override via env var; otherwise look in repo's ./voices.
+MODEL_DIR = os.environ.get(
+    "PIPER_KO_MODEL_DIR",
+    os.path.join(_ROOT, "voices", "vits-mimic3-ko_KO-kss_low"),
+)
 MODEL = os.path.join(MODEL_DIR, "ko_KO-kss_low.onnx")
 TOKENS = os.path.join(MODEL_DIR, "tokens.txt")
 ESPEAK_DATA = os.path.join(MODEL_DIR, "espeak-ng-data")
